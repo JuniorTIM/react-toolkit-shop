@@ -1,5 +1,6 @@
 .cartButton {
   position: relative;
+  cursor: pointer;
 }
 
 .cartButton img {
@@ -18,4 +19,66 @@
   font-size: 10px;
   text-align: center;
   border-radius: 12px;
+}
+
+.openCart {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  right: 5px;
+  border-radius: 2px;
+  top: 42px;
+  width: auto;
+  box-shadow: 1px 1px 1px 1px gray;
+  text-align: center;
+  padding-left: 5px;
+}
+
+.headerTr {
+  font-weight: bold;
+  width: auto;
+}
+
+.closeCart {
+  color: gray;
+  font-size: 12px;
+  margin-bottom: 20px;
+  float: right;
+  background-color: white;
+  border: none;
+}
+
+.tdBtn {
+  width: 10px;
+}
+
+.nameTd {
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+.productImg {
+  width: 35px;
+  height: 40px;
+}
+
+.productName {
+  margin: 0px;
+  width: auto;
+  font-size: 12px;
+}
+
+.delBtn {
+  background-color: none;
+  border: none;
+}
+
+.plus {
+  margin-left: 50px;
+}
+
+.amount {
+  margin-right: 50px;
 }

@@ -1,0 +1,14 @@
+.categories {
+    margin-top: 10%;
+}
+
+.category {
+    text-decoration: none;
+    color: black;
+    padding-left: 15px;
+}
+
+hr {
+    height: 1px;
+}
+

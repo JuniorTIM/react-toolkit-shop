@@ -1,3 +1,5 @@
+import { createAction, createReducer } from '@reduxjs/toolkit'
+
 const initialState = {
   products: [
     {
@@ -102,12 +104,60 @@ const initialState = {
   ],
 };
 
-export const shopReducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+export const shopReducer = createReducer(initialState, builder => {
+  builder.addCase('add', (state, action) => {
+    state.cartItems.push(action.payload)
+
+    state.products.map(element => {
+      if (element.id === action.payload.productId) {
+        element.left -= action.payload.amount
+        return element
+      }
+      return element
+    })
+
+  })
+  builder.addCase('delete', (state, action) => {
+   state.cartItems = state.cartItems.filter((element) => {
+      if (element.productId !== action.payload) {
+        return true
+      }
+      return false
+    })
+  })
+  builder.addCase('plus', (state, action) => {
+    state.cartItems = state.cartItems.map(element => {
+      if (element.productId === action.payload) {
+        element.amount += 1
+        return element
+      }
+      return element
+    })
+    state.products = state.products.map(element => {
+      if (element.id === action.payload) {
+        element.left -= 1
+        return element
+      }
+      return element
+    })
+  })
+  builder.addCase('minus', (state, action) => {
+    state.cartItems = state.cartItems.map(element => {
+      if (element.productId === action.payload) {
+        element.amount -= 1
+        return element
+      }
+      return element
+    })
+    state.products = state.products.map(element => {
+      if (element.id === action.payload) {
+        element.left += 1
+        return element
+      }
+      return element
+    })
+  })
+});
 
 // Эту функцию трогать не стоит! Она написана, чтобы ты мог в консоле
 // наблюдать за тем, какие экшены выполняются и как меняется стейт
